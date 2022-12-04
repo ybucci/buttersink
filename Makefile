@@ -21,13 +21,13 @@ makestamps :
 
 .PHONY : clean_setup
 clean_setup :
-	./setup.py clean
+	python2 setup.py clean
 	sudo rm -rf build dist buttersink.egg-info
 
 .PHONY : install
 install : buttersink/version.py
-	./setup.py build
-	sudo ./setup.py install
+	python2 ./setup.py build
+	python2 ./setup.py install
 
 .PHONY : clean
 clean : clean_setup
@@ -35,7 +35,7 @@ clean : clean_setup
 
 .PHONY : pypi
 pypi : buttersink/version.py
-	./setup.py bdist sdist upload
+	python2 ./setup.py bdist sdist upload
 
 makestamps/source : $(shell git ls-files '*.py')
 	touch $@
